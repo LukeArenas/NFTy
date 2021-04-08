@@ -4,9 +4,11 @@ from flask_migrate import Migrate
 from models.db import db
 from models.post import Post
 from resources.post import Posts,PostDetail
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/nfty_database"
