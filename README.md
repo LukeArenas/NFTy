@@ -2,7 +2,7 @@
 
 ## Date: 4/9/2021
 
-### By: [Luke Arenas](https://github.com/LukeArenas), Siobahn Schuck, Queenie Williams
+### By: [Luke Arenas](https://github.com/LukeArenas), [Siobahn Schuck](https://github.com/siobahnschuck), [Queenie Williams](https://github.com/queeniewilliams)
 
 ---
 
