@@ -1,23 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+import React, {useEffect, useState} from 'react'
+import PostForm from './components/PostForm'
+import Feed from './components/Feed'
+import Header from './components/Header.jsx'
+import axios from 'axios'
+import {BASE_URL} from './globals'
 
-function App() {
+
+const App = () => {
+  const [posts, setPosts] = useState([])
+  const [newPost, setNewPost] = useState({
+    username: "",
+    image: '',
+    bid: 0,
+    description: ''
+  })
+
+  const handleChange = (e) => {
+      setNewPost({
+        ...newPost,
+        [e.target.name]: e.target.value
+      })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.post(`${BASE_URL}/posts`, newPost)
+      console.log(res)
+      // setNewPost(...newPost)
+      // setNewPost({
+      //   username: "",
+      //   image: '',
+      //   bid: 0,
+      //   description: ''
+      // })
+
+    }catch(err){
+      throw err
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <PostForm 
+      newPost={newPost}
+      setNewPost={setNewPost}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      />
+      <Feed
+        posts={posts}
+        setPosts={setPosts}
+      />
     </div>
   );
 }
