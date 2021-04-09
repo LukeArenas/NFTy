@@ -8,7 +8,8 @@
 
 ### ***Description***
 
-A simple full-stack app to simulate an anonymous posting and bidding process for NFTs.
+A full-stack app to simulate the posting and bidding process of NFTs.
+
 
 ***
 
@@ -17,17 +18,11 @@ A simple full-stack app to simulate an anonymous posting and bidding process for
 Check out our app [here](https://www.google.com)
 
 ### ***Technologies***
-
+* Python
+* Javascript
 * React
 * Flask
-
-***
-
-### ***Front End Decisions***
-
-
-### ***Back End Decisions***
-
+* SQLAlchemy
 
 
 ### ***Screenshots***
@@ -38,8 +33,9 @@ Check out our app [here](https://www.google.com)
 
 ### ***Future Updates***
 
-- [ ] First thing
-- [ ] Next thing
+- [ ] Purchase of NFT 
+- [ ] User profile to display with collection
+- [ ] Mobile Responsive
 
 ***
 
