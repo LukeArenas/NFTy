@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 
 const Feed = (props) => {
   console.log(props.isRotated)
-  const [bid, setBid] = useState(1)
+  const [bidIncrease, setBid] = useState(1)
 
   const handleBid = (e) => {
     e.preventDefault()
-    setBid(parseInt(e.target.value))
+    setBid(e.target.value)
   }
 
   return (
@@ -33,10 +33,10 @@ const Feed = (props) => {
                 />
               </div>
             </div>
-            <input className='logo' type='text' placeholder='bid' value={bid} onChange={(e)=>handleBid(e)}/>
+            <input className='logo' type='text' placeholder='bid' value={bidIncrease} onChange={(e)=>handleBid(e)}/>
             <img
               className={`govel ${props.isRotated ? 'rotated' : ''}`}
-              onClick={() => props.incrementBid(post.id, post.bid, index)}
+              onClick={() => props.incrementBid(post.id, post.bid, parseInt(bidIncrease), index)}
               src="https://i.ibb.co/y51nPPB/Pin-Clipart-com-mallet-clipart-5634774.png"
               width="40px"
             />
