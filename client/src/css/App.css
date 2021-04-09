@@ -3,18 +3,67 @@
   text-align: center;
   width: 100vw;
   background-color: black;
-  position: relative;
-}
-header {
-  color: white;
 }
 
 .logo {
+  margin-top: 10px;
+  justify-self: right;
+  color: black;
   text-align: center;
   width: 100px;
-  height: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   border-radius: 50px;
-  background-color: yellow;
+  background-color: rgb(255, 217, 0);
+}
+.header-sign {
+  justify-self: right;
+}
+
+header {
+  color: white;
+  display: grid;
+  justify-items: center;
+  position: relative;
+}
+.header {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+.signBtn {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px rgb(70, 69, 69) solid;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#closeBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: none;
+  background-color: black;
+  color: white;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.modal-dialog.sign {
+  position: absolute;
+  text-align: center;
+  color: black;
+  background-color: rgb(255, 217, 0);
+  width: 30vw;
+  height: 50vh;
+  top: 150%;
+  left: 35%;
+}
+.header-description {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
 }
 .form {
   margin: 20px;
@@ -34,6 +83,9 @@ input {
   outline: 0;
   background: transparent;
   border-bottom: 1px solid rgb(243, 241, 241);
+}
+.bid-amount {
+  color: white;
 }
 .description {
   height: 15vw;
