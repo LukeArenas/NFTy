@@ -2,5 +2,6 @@
   "cSpell.words": [
     "dotenv",
     "onupdate"
-  ]
+  ],
+  "python.pythonPath": "venv/bin/python"
 }
