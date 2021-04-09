@@ -22,8 +22,8 @@ class PostDetail(Resource):
     post=Post.find_by_id(post_id)
     for key in data:
       setattr(post,key,data[key])
-      db.session.commit()
-      return post.json()
+    db.session.commit()
+    return post.json()
 
   def delete(self,post_id):
     post=Post.find_by_id(post_id)
