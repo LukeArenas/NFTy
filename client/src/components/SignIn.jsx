@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/App.css'
-import { Login, GetLogin } from '../services/AuthServices'
+import { Login } from '../services/AuthServices'
 
 const SignIn = (props) => {
   const [loginForm, handleLoginForm] = useState({

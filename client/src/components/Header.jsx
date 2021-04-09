@@ -20,6 +20,9 @@ const Header = (props) => {
           >
             Sign Up
           </button>
+          <button className="signBtn" onClick={() => props.logOut()}>
+            Log Out
+          </button>
         </div>
       </div>
       <SignUp
@@ -36,7 +39,6 @@ const Header = (props) => {
         userId={props.userId}
         setUserId={props.setUserId}
         setCurrentUser={props.setCurrentUser}
-        checkSession={props.checkSession}
       />
       <p className="header-description">
         Simulating a NFT marketplace <br></br>where posted images become
