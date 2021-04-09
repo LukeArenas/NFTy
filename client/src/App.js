@@ -11,9 +11,10 @@ const App = () => {
   const [newPost, setNewPost] = useState({
     username: '',
     image: '',
-    bid: 0,
+    bid: null,
     description: ''
   })
+  const [isRotated, setIsRotated] = useState(false)
 
   useEffect(() => {
     getAllPosts()
@@ -31,9 +32,9 @@ const App = () => {
     try {
       const res = await axios.post(`${BASE_URL}/posts`, newPost)
       setNewPost({
-        username: "",
+        username: '',
         image: '',
-        bid: 0,
+        bid: null,
         description: ''
       })
       getAllPosts()
@@ -61,6 +62,7 @@ const App = () => {
       target.bid = target.bid + 1
       postsArr.splice(index, 1, target)
       setPosts(postsArr)
+      setIsRotated(!isRotated)
       return res.data
     } catch (error) {
       throw error
@@ -71,9 +73,9 @@ const App = () => {
     try {
       const res = await axios.delete(`${BASE_URL}/posts/${id}`)
       console.log(res)
-      let filteredPosts = [...posts].filter((post) => (
-          post.id !== parseInt(res.data.payload)
-      ))
+      let filteredPosts = [...posts].filter(
+        (post) => post.id !== parseInt(res.data.payload)
+      )
       setPosts(filteredPosts)
     } catch (error) {
       throw error
@@ -89,12 +91,13 @@ const App = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      <Feed 
-        posts={posts} 
-        setPosts={setPosts} 
+      <Feed
+        posts={posts}
+        isRotated={isRotated}
+        setPosts={setPosts}
         incrementBid={incrementBid}
         deletePost={deletePost}
-         />
+      />
     </div>
   )
 }
