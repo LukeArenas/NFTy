@@ -16,14 +16,15 @@ class Post(db.Model):
     ), nullable=False, onupdate=datetime.now())
     user = db.relationship('User', backref=db.backref('users', lazy=True))
 
-    def __init__(self, username, image, bid, description):
+    def __init__(self,user_id,username, image, bid, description):
+        self.user_id=user_id
         self.username = username
         self.image = image
         self.bid = bid
         self.description = description
 
     def json(self):
-        return{"id": self.id, "username": self.username, "image": self.image, "bid": self.bid, "description": self.description, "created_at": str(self.created_at), "updated_at": str(self.updated_at)}
+        return{"id": self.id, "user_id":self.user_id, "username": self.username, "image": self.image, "bid": self.bid, "description": self.description, "created_at": str(self.created_at), "updated_at": str(self.updated_at)}
 
     def create(self):
         db.session.add(self)

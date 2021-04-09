@@ -1,27 +1,23 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import axios from 'axios'
-import { BASE_URL } from '../globals'
+import { Register } from '../services/AuthServices'
 
 const SignUp = (props) => {
   const [registerForm, handleRegisterForm] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
+    name: '',
     email: '',
-    passwordDigest: '',
+    password: '',
     confirmPassword: ''
   })
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
+    console.log('firing')
     try {
-      await axios.post(`${BASE_URL}/auth/register`, registerForm)
+      await Register(registerForm)
       handleRegisterForm({
-        firstName: '',
-        lastName: '',
-        username: '',
+        name: '',
         email: '',
-        passwordDigest: ''
+        password: ''
       })
       props.toggleSignUp(false)
       props.toggleSignIn(true)
@@ -36,7 +32,7 @@ const SignUp = (props) => {
 
   const handleConfirm = (e) => {
     e.preventDefault()
-    if (registerForm.passwordDigest === registerForm.confirmPassword) {
+    if (registerForm.password === registerForm.confirmPassword) {
       return handleSubmit()
     } else {
       alert('Your password does not match, please try again!')
@@ -56,25 +52,9 @@ const SignUp = (props) => {
           <form onSubmit={handleConfirm}>
             <input
               type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={registerForm.firstName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={registerForm.lastName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="username"
-              value={registerForm.username}
+              name="name"
+              placeholder="Name"
+              value={registerForm.name}
               onChange={handleChange}
               required
             />
@@ -88,7 +68,7 @@ const SignUp = (props) => {
             />
             <input
               type="password"
-              name="passwordDigest"
+              name="password"
               placeholder="Password"
               value={registerForm.passwordDigest}
               onChange={handleChange}
@@ -108,8 +88,8 @@ const SignUp = (props) => {
               type="submit"
               disabled={
                 !registerForm.email ||
-                !registerForm.passwordDigest ||
-                !registerForm.firstName
+                !registerForm.password ||
+                !registerForm.name
               }
               className="signBtn"
             >
