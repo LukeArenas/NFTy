@@ -16,6 +16,7 @@ const Feed = (props) => {
             />
           </h2>
           <p>{post.description}</p>
+          <button onClick={() => props.deletePost(post.id)}>delete</button>
         </div>
       ))}
     </div>

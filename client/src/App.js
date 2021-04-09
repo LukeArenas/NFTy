@@ -15,6 +15,10 @@ const App = () => {
     description: ''
   })
 
+  useEffect(() => {
+    getAllPosts()
+  }, [])
+
   const handleChange = (e) => {
     setNewPost({
       ...newPost,
@@ -24,24 +28,19 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(newPost)
     try {
       const res = await axios.post(`${BASE_URL}/posts`, newPost)
-      console.log(res)
-      // setNewPost(...newPost)
-      // setNewPost({
-      //   username: "",
-      //   image: '',
-      //   bid: 0,
-      //   description: ''
-      // })
+      setNewPost({
+        username: "",
+        image: '',
+        bid: 0,
+        description: ''
+      })
+      getAllPosts()
     } catch (err) {
       throw err
     }
   }
-  useEffect(() => {
-    getAllPosts()
-  }, [])
 
   const getAllPosts = async () => {
     try {
@@ -68,6 +67,19 @@ const App = () => {
     }
   }
 
+  const deletePost = async (id) => {
+    try {
+      const res = await axios.delete(`${BASE_URL}/posts/${id}`)
+      console.log(res)
+      let filteredPosts = [...posts].filter((post) => (
+          post.id !== parseInt(res.data.payload)
+      ))
+      setPosts(filteredPosts)
+    } catch (error) {
+      throw error
+    }
+  }
+
   return (
     <div className="App">
       <Header />
@@ -77,7 +89,12 @@ const App = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      <Feed posts={posts} setPosts={setPosts} incrementBid={incrementBid} />
+      <Feed 
+        posts={posts} 
+        setPosts={setPosts} 
+        incrementBid={incrementBid}
+        deletePost={deletePost}
+         />
     </div>
   )
 }
