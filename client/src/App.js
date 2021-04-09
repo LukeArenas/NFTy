@@ -35,7 +35,7 @@ const App = () => {
     let token = localStorage.getItem('token')
     if (token) {
       const res = await GetLogin()
-      // console.log(res)
+      console.log(res)
       setCurrentUser(res)
       setAuthenticated(true)
     }
@@ -44,6 +44,12 @@ const App = () => {
     checkSession()
     getAllPosts()
   }, [])
+
+  const logOut = () => {
+    setAuthenticated(false)
+    localStorage.clear()
+    console.log(localStorage)
+  }
 
   const handleChange = (e) => {
     setNewPost({
@@ -119,9 +125,7 @@ const App = () => {
         toggleOpen={toggleOpen}
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
-        // userId={userId}
-        // setUserId={setUserId}
-        checkSession={checkSession}
+        logOut={logOut}
       />
       <PostForm
         newPost={newPost}
