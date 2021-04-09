@@ -1,7 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Feed = (props) => {
   console.log(props.isRotated)
+  const [bid, setBid] = useState(1)
+
+  const handleBid = (e) => {
+    e.preventDefault()
+    setBid(parseInt(e.target.value))
+  }
+
   return (
     <div>
       <h1>Explore Bids🔥</h1>
@@ -26,6 +33,7 @@ const Feed = (props) => {
                 />
               </div>
             </div>
+            <input className='logo' type='text' placeholder='bid' value={bid} onChange={(e)=>handleBid(e)}/>
             <img
               className={`govel ${props.isRotated ? 'rotated' : ''}`}
               onClick={() => props.incrementBid(post.id, post.bid, index)}
