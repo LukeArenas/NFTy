@@ -19,7 +19,7 @@ class Post(db.Model):
     self.description=description
 
   def json(self):
-    return{"id":self.id,"image":self.image,"bid":self.bid,"description":self.description,"created_at":str(self.created_at),"updated_at":str(self.updated_at)}
+    return{"id":self.id,"username":self.username,"image":self.image,"bid":self.bid,"description":self.description,"created_at":str(self.created_at),"updated_at":str(self.updated_at)}
 
   def create(self):
     db.session.add(self)
