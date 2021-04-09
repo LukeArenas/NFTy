@@ -1,38 +1,124 @@
 .App {
+  display: grid;
   text-align: center;
+  width: 100vw;
+  background-color: black;
+  position: relative;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+header {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.form {
+  margin: 20px;
+  justify-self: center;
+  width: 30vw;
+  height: 60vh;
+  border: 1px rgb(70, 69, 69) solid;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgb(29, 29, 29);
+}
+input {
+  text-align: left;
+  font-weight: bold;
+  width: 20vw;
+  margin: 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid rgb(243, 241, 241);
+}
+.description {
+  height: 15vw;
+  border: 1px solid rgb(243, 241, 241);
+  background: transparent;
+}
+#create {
+  border: none;
+  border-radius: 20px;
+  padding: 15px 30px 15px 30px;
+  color: rgb(63, 119, 241);
+  font-weight: bold;
+  background-color: rgba(58, 106, 211, 0.37);
+}
+.box {
+  margin-bottom: 50px;
+}
+.govel {
+  transition: transform 0.5s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.govel:hover {
+  transform: rotate(-45deg);
+}
+.govel.rotated {
+  transform: rotate(0);
+}
+
+.feed {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.post {
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
+}
+#post {
+  border: 1px rgb(70, 69, 69) solid;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgb(29, 29, 29);
+  margin: 10px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+#post:hover {
+  transform: rotateY(180deg);
+}
+.front,
+.back {
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+.front {
+  display: grid;
+  justify-items: center;
+  position: relative;
+}
+.back {
+  text-align: left;
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 200px;
+  height: 200px;
+  align-content: center;
+  color: white;
+  font-weight: bold;
+  transform: rotateY(180deg);
+}
+#trash {
+  position: absolute;
+  bottom: -95%;
+  right: -15%;
+}
+h1 {
+  margin-top: 0;
+  color: white;
+}
+h2 {
+  color: grey;
+  font-size: 18px;
+}
+h4 {
+  color: white;
+}
+h5 {
+  font-size: 16px;
+  margin-left: 5px;
+  color: blue;
+}
+.bid {
+  display: flex;
+  align-items: baseline;
 }

@@ -28,7 +28,7 @@ class Post(db.Model):
 
   @classmethod
   def find_all(cls):
-    return Post.query.all()
+    return Post.query.order_by(Post.bid.desc()).all()
 
   @classmethod
   def find_by_id(cls,post_id):

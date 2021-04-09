@@ -2,8 +2,8 @@ import React from 'react'
 
 const PostForm = (props) => {
   return (
-    <div>
-      <h3>Submit your NFTy below:</h3>
+    <div className="form">
+      <h4>Submit your NFTy below:</h4>
       <form onSubmit={props.handleSubmit}>
         <input
           name="username"
@@ -11,12 +11,14 @@ const PostForm = (props) => {
           value={props.newPost.username}
           onChange={props.handleChange}
         />
+        <br></br>
         <input
           name="image"
           placeholder="image link"
           value={props.newPost.image}
           onChange={props.handleChange}
         />
+        <br></br>
         <input
           name="bid"
           type="number"
@@ -24,13 +26,19 @@ const PostForm = (props) => {
           value={props.newPost.bid}
           onChange={props.handleChange}
         />
+        <br></br>
         <input
+          className="description"
           name="description"
           placeholder="a brief description"
           value={props.newPost.description}
           onChange={props.handleChange}
         />
-        <button type="submit">Submit</button>
+        <br></br>
+        <br></br>
+        <button id="create" type="submit">
+          Create
+        </button>
       </form>
     </div>
   )
