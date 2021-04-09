@@ -116,7 +116,7 @@ const App = () => {
   }
   const propsPostForm = {newPost, setNewPost, handleChange, handleSubmit}
   const propsFeed = {posts, setPosts, incrementBid, deletePost, isRotated}
-  const propsHeader = {signInOpen, signUpOpen, toggleSignIn, toggleSignUp, toggleOpen, authenticated, setAuthenticated, checkSession}
+  const propsHeader = {signInOpen, signUpOpen, toggleSignIn, toggleSignUp, toggleOpen, authenticated, setAuthenticated, checkSession, logOut}
   return (
     <div className="App">
       <Header
