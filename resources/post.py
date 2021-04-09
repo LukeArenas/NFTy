@@ -2,6 +2,7 @@ from flask import request
 from flask_restful import Resource
 from models.post import Post
 from models.db import db
+from middleware import strip_token, read_token
 
 
 

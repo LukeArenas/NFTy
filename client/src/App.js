@@ -19,7 +19,6 @@ const App = () => {
   const [isRotated, setIsRotated] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
-  // const [userId, setUserId] = useState(null)
   const [signInOpen, toggleSignIn] = useState(false)
   const [signUpOpen, toggleSignUp] = useState(false)
 
@@ -100,6 +99,7 @@ const App = () => {
   const deletePost = async (id) => {
     try {
       const res = await axios.delete(`${BASE_URL}/posts/${id}`)
+      console.log(res)
       let filteredPosts = [...posts].filter(
         (post) => post.id !== parseInt(res.data.payload)
       )

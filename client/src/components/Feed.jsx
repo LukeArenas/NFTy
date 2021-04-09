@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Feed = (props) => {
   console.log(props.isRotated)
@@ -37,7 +37,7 @@ const Feed = (props) => {
               </div>
             </div>
             <input
-              className="logo"
+              className="bid-input"
               type="text"
               placeholder="bid"
               value={selectedPost == post.id ? bidIncrease : 1}
