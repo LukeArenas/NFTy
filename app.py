@@ -21,4 +21,4 @@ api.add_resource(Posts,'/posts')
 api.add_resource(PostDetail,'/posts/<int:post_id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=3001,debug=True)
