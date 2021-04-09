@@ -51,15 +51,13 @@ const App = () => {
       throw error
     }
   }
-  const incrementBid = async (id, bid, index) => {
+  const incrementBid = async (id, bid, bidIncrease, index) => {
     try {
-      let update = { bid: bid + 1 }
-      console.log(bid)
+      let update = { bid: bid + bidIncrease }
       const res = await axios.put(`${BASE_URL}/posts/${id}`, update)
-      console.log(res)
       let postsArr = [...posts]
       let target = postsArr[index]
-      target.bid = target.bid + 1
+      target.bid = target.bid + bidIncrease
       postsArr.splice(index, 1, target)
       setPosts(postsArr)
       setIsRotated(!isRotated)
