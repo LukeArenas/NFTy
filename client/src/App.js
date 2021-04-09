@@ -24,6 +24,7 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(newPost)
     try {
       const res = await axios.post(`${BASE_URL}/posts`, newPost)
       console.log(res)
