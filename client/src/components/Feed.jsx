@@ -11,6 +11,7 @@ const Feed = (props) => {
     setSelectedPost(id)
   }
 
+  console.log(props.posts)
   return (
     <div>
       <h1>Explore Bids🔥</h1>
@@ -35,11 +36,23 @@ const Feed = (props) => {
                 />
               </div>
             </div>
-            
-            <input className='logo' type='text' placeholder='bid' value={ selectedPost == post.id ? bidIncrease : 1 } onChange={(e)=>handleBid(e, post.id)}/>
+            <input
+              className="logo"
+              type="text"
+              placeholder="bid"
+              value={selectedPost == post.id ? bidIncrease : 1}
+              onChange={(e) => handleBid(e, post.id)}
+            />
             <img
               className={`govel ${props.isRotated ? 'rotated' : ''}`}
-              onClick={() => props.incrementBid(post.id, post.bid, parseInt(bidIncrease), index)}
+              onClick={() =>
+                props.incrementBid(
+                  post.id,
+                  post.bid,
+                  parseInt(bidIncrease),
+                  index
+                )
+              }
               src="https://i.ibb.co/y51nPPB/Pin-Clipart-com-mallet-clipart-5634774.png"
               width="40px"
             />
