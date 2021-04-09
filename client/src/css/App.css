@@ -8,6 +8,14 @@
 header {
   color: white;
 }
+
+.logo {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: yellow;
+}
 .form {
   margin: 20px;
   justify-self: center;
