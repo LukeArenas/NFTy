@@ -16,7 +16,6 @@ const SignIn = (props) => {
       localStorage.setItem('token', res.token)
       props.setAuthenticated(true)
       props.toggleSignIn(false)
-      // props.setCurrentUser(res.user)
       handleLoginForm({ email: '', password: '' })
     } catch (error) {
       console.log(error)
