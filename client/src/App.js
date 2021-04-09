@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PostForm from './components/PostForm'
 import Feed from './components/Feed'
 import Header from './components/Header.jsx'
+import {GetAllPosts, UpdatePost, DeletePost} from './services/PostServices'
 import axios from 'axios'
 import { BASE_URL } from './globals'
 
@@ -45,12 +46,13 @@ const App = () => {
 
   const getAllPosts = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/posts`)
+      const res = await GetAllPosts()
       setPosts(res.data)
     } catch (error) {
       throw error
     }
   }
+  
   const incrementBid = async (id, bid, index) => {
     try {
       let update = { bid: bid + 1 }
