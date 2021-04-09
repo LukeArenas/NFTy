@@ -13,6 +13,7 @@ const PostForm = (props) => {
         />
         <br></br>
         <input
+          style={{ color: 'white' }}
           name="image"
           placeholder="image link"
           value={props.newPost.image}

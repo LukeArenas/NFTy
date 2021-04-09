@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 import PostForm from './components/PostForm'
 import Feed from './components/Feed'
 import Header from './components/Header.jsx'
-import {GetAllPosts, UpdatePost, DeletePost} from './services/PostServices'
+import { GetAllPosts, UpdatePost, DeletePost } from './services/PostServices'
 import axios from 'axios'
 import { BASE_URL } from './globals'
+import { GetLogin } from './services/AuthServices'
 
 const App = () => {
   const [posts, setPosts] = useState([])
@@ -17,7 +18,8 @@ const App = () => {
   })
   const [isRotated, setIsRotated] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState(null)
+  // const [userId, setUserId] = useState(null)
   const [signInOpen, toggleSignIn] = useState(false)
   const [signUpOpen, toggleSignUp] = useState(false)
 
@@ -30,7 +32,17 @@ const App = () => {
       toggleSignUp(true)
     }
   }
+  const checkSession = async () => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      const res = await GetLogin()
+      // console.log(res)
+      setCurrentUser(res)
+      setAuthenticated(true)
+    }
+  }
   useEffect(() => {
+    checkSession()
     getAllPosts()
   }, [])
 
@@ -44,14 +56,17 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${BASE_URL}/posts`, newPost)
+      const res = await axios.post(`${BASE_URL}/posts`, {
+        ...newPost,
+        user_id: currentUser.id
+      })
       setNewPost({
         username: '',
         image: '',
         bid: null,
         description: ''
       })
-      getAllPosts()
+      setPosts([...posts, res.data])
     } catch (err) {
       throw err
     }
@@ -59,7 +74,7 @@ const App = () => {
 
   const getAllPosts = async () => {
     try {
-      const res = await GetAllPosts()
+      const res = await axios.get(`${BASE_URL}/posts`)
       setPosts(res.data)
     } catch (error) {
       throw error
@@ -67,7 +82,6 @@ const App = () => {
   }
 
   const incrementBid = async (id, bid, bidIncrease, index) => {
-
     try {
       let update = { bid: bid + bidIncrease }
       const res = await axios.put(`${BASE_URL}/posts/${id}`, update)
@@ -86,7 +100,6 @@ const App = () => {
   const deletePost = async (id) => {
     try {
       const res = await axios.delete(`${BASE_URL}/posts/${id}`)
-      console.log(res)
       let filteredPosts = [...posts].filter(
         (post) => post.id !== parseInt(res.data.payload)
       )
@@ -104,6 +117,11 @@ const App = () => {
         toggleSignIn={toggleSignIn}
         toggleSignUp={toggleSignUp}
         toggleOpen={toggleOpen}
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+        // userId={userId}
+        // setUserId={setUserId}
+        checkSession={checkSession}
       />
       <PostForm
         newPost={newPost}

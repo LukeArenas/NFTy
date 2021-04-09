@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/App.css'
-import axios from 'axios'
-import { BASE_URL } from '../globals'
+import { Login, GetLogin } from '../services/AuthServices'
 
 const SignIn = (props) => {
   const [loginForm, handleLoginForm] = useState({
-    username: '',
+    email: '',
     password: ''
   })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${BASE_URL}/auth/login`, loginForm)
-      localStorage.setItem('token', res.data.token)
+      const res = await Login(loginForm)
+      // const response = await GetLogin()
+      // console.log(response)
+      localStorage.setItem('token', res.token)
       props.setAuthenticated(true)
       props.toggleSignIn(false)
-      props.setCurrentUser(res.data.user)
-      handleLoginForm({ username: '', password: '' })
+      // props.setCurrentUser(res.user)
+      handleLoginForm({ email: '', password: '' })
+      // props.checkSession()
     } catch (error) {
       console.log(error)
       return alert('Your username or password is incorrect')
@@ -42,10 +44,10 @@ const SignIn = (props) => {
           <h2 style={{ color: 'black' }}>Sign In</h2>
           <form onSubmit={handleSubmit}>
             <input
-              type="username"
-              name="username"
-              placeholder="Username"
-              value={loginForm.username}
+              type="text"
+              name="email"
+              placeholder="email"
+              value={loginForm.email}
               onChange={handleChange}
               required
             />
@@ -61,7 +63,7 @@ const SignIn = (props) => {
             <Button
               type="submit"
               className="signBtn"
-              disabled={!loginForm.username || !loginForm.password}
+              disabled={!loginForm.email || !loginForm.password}
               onClick={handleSubmit}
             >
               Sign In

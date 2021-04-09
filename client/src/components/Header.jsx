@@ -31,6 +31,12 @@ const Header = (props) => {
         signInOpen={props.signInOpen}
         toggleSignIn={props.toggleSignIn}
         toggleSignUp={props.toggleSignUp}
+        authenticated={props.authenticated}
+        setAuthenticated={props.setAuthenticated}
+        userId={props.userId}
+        setUserId={props.setUserId}
+        setCurrentUser={props.setCurrentUser}
+        checkSession={props.checkSession}
       />
       <p className="header-description">
         Simulating a NFT marketplace <br></br>where posted images become
