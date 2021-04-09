@@ -20,6 +20,7 @@ const PostForm = (props) => {
         />
         <br></br>
         <input
+          className="bid-amount"
           name="bid"
           type="number"
           placeholder="starting bid amount"
