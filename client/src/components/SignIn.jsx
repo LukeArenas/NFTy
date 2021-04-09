@@ -13,14 +13,11 @@ const SignIn = (props) => {
     e.preventDefault()
     try {
       const res = await Login(loginForm)
-      // const response = await GetLogin()
-      // console.log(response)
       localStorage.setItem('token', res.token)
       props.setAuthenticated(true)
       props.toggleSignIn(false)
       // props.setCurrentUser(res.user)
       handleLoginForm({ email: '', password: '' })
-      // props.checkSession()
     } catch (error) {
       console.log(error)
       return alert('Your username or password is incorrect')
