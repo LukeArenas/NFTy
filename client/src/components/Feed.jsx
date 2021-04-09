@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const Feed = (props) => {
-  console.log(props.isRotated)
   const [bidIncrease, setBid] = useState(1)
   const [selectedPost, setSelectedPost] = useState(0)
 
@@ -11,7 +10,6 @@ const Feed = (props) => {
     setSelectedPost(id)
   }
 
-  console.log(props.posts)
   return (
     <div>
       <h1>Explore Bids🔥</h1>
