@@ -108,33 +108,19 @@ const App = () => {
       throw error
     }
   }
-
+  const propsPostForm = {newPost, setNewPost, handleChange, handleSubmit}
+  const propsFeed = {posts, setPosts, incrementBid, deletePost, isRotated}
+  const propsHeader = {signInOpen, signUpOpen, toggleSignIn, toggleSignUp, toggleOpen, authenticated, setAuthenticated, checkSession}
   return (
     <div className="App">
       <Header
-        signUpOpen={signUpOpen}
-        signInOpen={signInOpen}
-        toggleSignIn={toggleSignIn}
-        toggleSignUp={toggleSignUp}
-        toggleOpen={toggleOpen}
-        authenticated={authenticated}
-        setAuthenticated={setAuthenticated}
-        // userId={userId}
-        // setUserId={setUserId}
-        checkSession={checkSession}
+        {...propsHeader}
       />
       <PostForm
-        newPost={newPost}
-        setNewPost={setNewPost}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        {...propsPostForm}
       />
       <Feed
-        posts={posts}
-        isRotated={isRotated}
-        setPosts={setPosts}
-        incrementBid={incrementBid}
-        deletePost={deletePost}
+        {...propsFeed}
       />
     </div>
   )
