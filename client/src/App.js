@@ -15,7 +15,20 @@ const App = () => {
     description: ''
   })
   const [isRotated, setIsRotated] = useState(false)
+  const [authenticated, setAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
+  const [signInOpen, toggleSignIn] = useState(false)
+  const [signUpOpen, toggleSignUp] = useState(false)
 
+  const toggleOpen = (arg) => {
+    toggleSignIn(false)
+    toggleSignUp(false)
+    if (arg === 'sign in') {
+      toggleSignIn(true)
+    } else if (arg === 'sign up') {
+      toggleSignUp(true)
+    }
+  }
   useEffect(() => {
     getAllPosts()
   }, [])
@@ -84,7 +97,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        signUpOpen={signUpOpen}
+        signInOpen={signInOpen}
+        toggleSignIn={toggleSignIn}
+        toggleSignUp={toggleSignUp}
+        toggleOpen={toggleOpen}
+      />
       <PostForm
         newPost={newPost}
         setNewPost={setNewPost}
