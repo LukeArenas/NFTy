@@ -1,7 +1,6 @@
 .App {
   display: grid;
   text-align: center;
-  width: 100vw;
   background-color: black;
 }
 
@@ -24,7 +23,6 @@ header {
   color: white;
   display: grid;
   justify-items: center;
-  position: relative;
 }
 .header {
   width: 100vw;
@@ -52,13 +50,13 @@ header {
   margin-left: 5px;
 }
 .modal-dialog.sign {
-  position: absolute;
+  position: fixed;
   text-align: center;
   color: black;
   background-color: rgb(255, 217, 0);
   width: 30vw;
   height: 50vh;
-  top: 30%;
+  top: 200px;
   left: 35%;
 }
 .header-description {
