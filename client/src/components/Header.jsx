@@ -8,21 +8,26 @@ const Header = (props) => {
       <div className="header">
         <h1 className="logo">NFTy</h1>
         <div className="header-sign">
-          <button
-            className="signBtn"
-            onClick={() => props.toggleOpen('sign in')}
-          >
-            Sign In
-          </button>
-          <button
-            className="signBtn"
-            onClick={() => props.toggleOpen('sign up')}
-          >
-            Sign Up
-          </button>
-          <button className="signBtn" onClick={() => props.logOut()}>
-            Log Out
-          </button>
+          {props.authenticated ? (
+            <button className="signBtn" onClick={() => props.logOut()}>
+              Log Out
+            </button>
+          ) : (
+            <div>
+              <button
+                className="signBtn"
+                onClick={() => props.toggleOpen('sign in')}
+              >
+                Sign In
+              </button>
+              <button
+                className="signBtn"
+                onClick={() => props.toggleOpen('sign up')}
+              >
+                Sign Up
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <SignUp
